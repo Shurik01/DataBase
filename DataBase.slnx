@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DataBase/DataBase.csproj" Id="12753bfa-49d9-464c-a6da-84a379a5aa42">
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+</Solution>
