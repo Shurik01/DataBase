@@ -5,34 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="400" MinWidth="400" Height="400" Width="Auto"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
    
         <DataGrid x:Name="booksGrid"
-                  ItemsSource="{Binding Books}"
-                  AutoGenerateColumns="True"
-                  Grid.Row="0"
+                  AutoGenerateColumns="False"
+                  Grid.Column="0"
                   FontFamily="DIALux Report Font Regular" 
                   FontSize="14" 
-                  Background="#FFFFF5F5" BorderBrush="{x:Null}" Foreground="Black" RowBackground="#FFFFF5F5"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" >
+                  Background="#FFFFF5F5"
+                  BorderBrush="{x:Null}" 
+                  Foreground="Black"
+                  RowBackground="#FFFFF5F5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+
+                <DataGridTextColumn Header="Название книги" 
+                            Width="*" 
+                            Binding="{Binding Title, UpdateSourceTrigger=LostFocus}"/>
+
+                <DataGridTextColumn Header="Автор" 
+                            Width="*" 
+                            Binding="{Binding Author, UpdateSourceTrigger=LostFocus}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right" >
+            <TextBlock Text=" Сортировать по" Width="100" Margin =" 5" HorizontalAlignment="Left"/>
+            <RadioButton x:Name="IdSort" Content="Id" Margin ="5" IsChecked="True" Checked="Sort_Checked"/>
+            <RadioButton x:Name="NameSort" Content="Названию книги" Margin ="5" Checked="Sort_Checked"/>
+            <RadioButton x:Name="AuthorSort" Content="Автору" Margin ="5" Checked="Sort_Checked"/>
             <TextBlock Text="Название" Margin="5"/>
             <TextBox Name="title" Width="150" Margin="5"/>
             <TextBlock Text="Автор" Margin="5"/>
             <TextBox Name="author" Width="150" Margin="5"/>
             <Button Click="Add_Click" Content="Добавить" Width="100" Margin="5"/>
             <Button Click="Delete_Click" Content="Удалить" Width="100" Margin="5"/>
-        </StackPanel>
-        <StackPanel Grid.Row=" 1">
-            <TextBlock Text=" Сортировать по" Width="100" Margin =" 5" HorizontalAlignment="Left"/>
-            <RadioButton x:Name="IdSort" Content="Id" Margin ="5" IsChecked="True" Checked="Sort_Checked"/>
-            <RadioButton x:Name="NameSort" Content="Названию книги" Margin ="5" Checked="Sort_Checked"/>
-            <RadioButton x:Name="AuthorSort" Content="Автору" Margin ="5" Checked="Sort_Checked"/>
         </StackPanel>
     </Grid>
 </Window>
