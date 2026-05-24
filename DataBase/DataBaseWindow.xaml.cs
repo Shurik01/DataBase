@@ -22,7 +22,7 @@ namespace DataBase
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DataBaseWindow : Window
     {
         /// <summary>
         /// переменная для работы с базой данных типа DataBaseWorking, объявление переменной
@@ -35,7 +35,7 @@ namespace DataBase
         /// <summary>
         /// Конструктор главного окна
         /// </summary>
-        public MainWindow()
+        public DataBaseWindow()
         {
             InitializeComponent(); // загрузка интерфейса
 
